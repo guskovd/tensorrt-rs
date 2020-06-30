@@ -3,7 +3,7 @@ project(LibTRT LANGUAGES CXX CUDA)
 
 set(CMAKE_CXX_STANDARD 17)
 
-set(CMAKE_CXX_FLAGS "-O3 -Wall -Wextra -Werror -Wno-unknown-pragmas")
+set(CMAKE_CXX_FLAGS "-O3 -Wall -Wextra -Werror -Wno-unknown-pragmas -Wno-deprecated-declarations")
 
 file(GLOB source_files
         "TRTLogger/*.h"

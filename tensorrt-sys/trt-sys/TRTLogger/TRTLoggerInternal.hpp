@@ -6,6 +6,7 @@
 #define LIBTRT_TRTLOGGERINTERNAL_HPP
 
 #include <memory>
+#include <cstdio>
 #include "TRTLogger.h"
 
 class TRTLogger : public nvinfer1::ILogger {

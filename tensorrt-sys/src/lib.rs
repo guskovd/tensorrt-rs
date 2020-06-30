@@ -25,7 +25,7 @@ mod tests {
         let mut c_buf = Vec::<c_char>::with_capacity(6);
         unsafe { get_tensorrt_version(c_buf.as_mut_ptr()) };
         let c_str = unsafe { CStr::from_ptr(c_buf.as_ptr()) };
-        assert_eq!("5.1.5", c_str.to_str().unwrap());
+        assert_eq!("7.0.0", c_str.to_str().unwrap());
     }
 
     //    #[test]
@@ -108,7 +108,7 @@ mod tests {
             )
         };
         let input_ret = unsafe {
-            uffparser_register_input(parser, CString::new("input").unwrap().as_ptr(), dims)
+            uffparser_register_input(parser, CString::new("input").unwrap().as_ptr(), dims, 1)
         };
         assert_eq!(input_ret, true);
 
