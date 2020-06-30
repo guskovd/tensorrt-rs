@@ -43,7 +43,7 @@ const char* context_get_name(Context_t *execution_context) {
     return execution_context->internal_context->getName();
 }
 
- void execute(Context_t* execution_context, const float* input_data, const size_t input_data_size, const int input_index, float *output_data, const size_t output_data_size, const int output_index) {
+void execute(Context_t* execution_context, const float* input_data, const size_t input_data_size, const int input_index, float *output_data, const size_t output_data_size, const int output_index) {
     if (execution_context == nullptr)
         return;
     auto& context = execution_context->internal_context;
@@ -58,4 +58,12 @@ const char* context_get_name(Context_t *execution_context) {
 
     cudaFree(&buffers[0]);
     cudaFree(&buffers[1]);
+}
+
+bool set_optimization_profile(Context_t* execution_context, int profile_index) {
+    return execution_context->internal_context->setOptimizationProfile(profile_index);
+}
+
+bool set_binding_shape(Context_t* execution_context, int binding_index, int d0, int d1) {
+    return execution_context->internal_context->setBindingDimensions(binding_index, nvinfer1::Dims2(d0, d1));
 }

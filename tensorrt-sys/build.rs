@@ -9,7 +9,6 @@ fn main() {
     println!("cargo:rustc-flags=-l dylib=nvinfer");
     println!("cargo:rustc-flags=-l dylib=nvparsers");
     println!("cargo:rustc-flags=-L /usr/local/cuda/lib64");
-    // println!("cargo:rustc-flags=-L /opt/cuda/lib64");
-    // println!("cargo:rustc-flags=-L /usr/local/cuda/targets/x86_64-linux/lib");
+    println!("cargo:rustc-flags=-L /opt/cuda/lib64");
     println!("cargo:rustc-flags=-l dylib=cudart");
 }

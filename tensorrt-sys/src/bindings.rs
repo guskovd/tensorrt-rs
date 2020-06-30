@@ -93,6 +93,23 @@ extern "C" {
         output_index: ::std::os::raw::c_int,
     );
 }
+extern "C" {
+    pub fn set_optimization_profile(
+        execution_context: *const Context_t,
+        profile_index: ::std::os::raw::c_int
+    );
+}
+
+extern "C" {
+    pub fn set_binding_shape(
+        execution_context: *const Context_t,
+        binding_index: ::std::os::raw::c_int,
+        d0: ::std::os::raw::c_int,
+        d1: ::std::os::raw::c_int,
+        // d2: ::std::os::raw::c_int
+    );
+}
+
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct HostMemory {
