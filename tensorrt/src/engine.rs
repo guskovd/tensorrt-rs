@@ -17,7 +17,7 @@ pub struct Engine {
 
 impl Engine {
     pub fn new(runtime: Runtime, buffer: Vec<u8>) -> Engine {
-        let engine = unsafe {
+        let mut engine = unsafe {
             deserialize_cuda_engine(
                 runtime.internal_runtime,
                 buffer.as_ptr() as *const c_void,

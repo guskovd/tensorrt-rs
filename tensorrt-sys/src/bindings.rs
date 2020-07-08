@@ -93,6 +93,26 @@ extern "C" {
         output_index: ::std::os::raw::c_int,
     );
 }
+
+extern "C" {
+    pub fn execute_v2(
+        execution_context: *const Context_t,
+        input_data: *const f32,
+        input_data_size: usize,
+        input_index: ::std::os::raw::c_int,
+        output_data: *mut f32,
+        output_size: usize,
+        output_index: ::std::os::raw::c_int,
+    );
+}
+
+extern "C" {
+    pub fn execute_bindings_v2(
+        execution_context: *const Context_t,
+        bindings: *const std::ffi::c_void
+    );
+}
+
 extern "C" {
     pub fn set_optimization_profile(
         execution_context: *const Context_t,
@@ -101,13 +121,12 @@ extern "C" {
 }
 
 extern "C" {
-    pub fn set_binding_shape(
+    pub fn set_binding_shape_dims2(
         execution_context: *const Context_t,
         binding_index: ::std::os::raw::c_int,
         d0: ::std::os::raw::c_int,
         d1: ::std::os::raw::c_int,
-        // d2: ::std::os::raw::c_int
-    );
+     );
 }
 
 #[repr(C)]

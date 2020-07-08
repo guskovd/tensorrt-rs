@@ -21,10 +21,12 @@ void destroy_excecution_context(Context_t* execution_context);
 void context_set_name(Context_t* execution_context, const char *name);
 const char* context_get_name(Context_t *execution_context);
 
-void execute(const Context_t* execution_context, const float* input_data, const size_t input_data_size, const int input_index,  float* output_data, const size_t output_size, const int output_index);
+void execute(Context_t* execution_context, const float* input_data, const size_t input_data_size, const int input_index, float *output_data, const size_t output_data_size, const int output_index);
+void execute_v2(Context_t* execution_context, const float* input_data, const size_t input_data_size, const int input_index, float *output_data, const size_t output_data_size, const int output_index);
+void execute_bindings_v2(Context_t* execution_context, void** bindings);
 
 bool set_optimization_profile(Context_t* execution_context, int profile_index);
-bool set_binding_shape(Context_t* execution_context, int binding_index, int d0, int d1);
+bool set_binding_shape_dims2(Context_t* execution_context, int binding_index, int d0, int d1);
 
 #ifdef __cplusplus
 };
