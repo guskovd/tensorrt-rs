@@ -22,7 +22,6 @@ void context_set_name(Context_t* execution_context, const char *name);
 const char* context_get_name(Context_t *execution_context);
 
 void execute(Context_t* execution_context, const float* input_data, const size_t input_data_size, const int input_index, float *output_data, const size_t output_data_size, const int output_index);
-void execute_v2(Context_t* execution_context, const float* input_data, const size_t input_data_size, const int input_index, float *output_data, const size_t output_data_size, const int output_index);
 void execute_bindings_v2(Context_t* execution_context, void** bindings);
 
 bool set_optimization_profile(Context_t* execution_context, int profile_index);
