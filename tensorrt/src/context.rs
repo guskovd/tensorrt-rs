@@ -1,7 +1,7 @@
 use std::convert::TryInto;
 use std::ffi::{CStr, CString};
 use tensorrt_sys::{
-    context_get_name, context_set_name, destroy_excecution_context, execute, execute_bindings_v2, Context_t,
+    context_get_name, context_set_name, destroy_excecution_context, execute, execute_v2, execute_bindings_v2, Context_t,
     set_optimization_profile, set_binding_shape_dims2
 };
 
@@ -38,6 +38,27 @@ impl<'a> Context<'a> {
     ) {
         unsafe {
             execute(
+                self.internal_context,
+                input_data.as_ptr(),
+                input_data.len() * std::mem::size_of::<f32>(),
+                input_binding_index.try_into().unwrap(),
+                output_data.as_mut_ptr(),
+                output_data_size * std::mem::size_of::<f32>(),
+                ouptut_binding_index.try_into().unwrap(),
+            );
+        }
+    }
+
+    pub fn execute_v2(
+        &self,
+        input_data: Vec<f32>,
+        input_binding_index: i32,
+        mut output_data: Vec<f32>,
+        output_data_size: usize,
+        ouptut_binding_index: i32,
+    ) {
+        unsafe {
+            execute_v2(
                 self.internal_context,
                 input_data.as_ptr(),
                 input_data.len() * std::mem::size_of::<f32>(),

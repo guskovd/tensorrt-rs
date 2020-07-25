@@ -62,6 +62,23 @@ void execute(Context_t* execution_context, const float* input_data, const size_t
     cudaFree(&buffers[1]);
 }
 
+void execute_v2(Context_t* execution_context, const float* input_data, const size_t input_data_size, const int input_index, float *output_data, const size_t output_data_size, const int output_index) {
+    if (execution_context == nullptr)
+        return;
+    auto& context = execution_context->internal_context;
+
+    void* buffers[2];
+    cudaMalloc(&buffers[0], input_data_size);
+    cudaMalloc(&buffers[1], output_data_size);
+
+    cudaMemcpy(buffers[input_index], input_data, input_data_size, cudaMemcpyHostToDevice);
+    context->executeV2(buffers);
+    cudaMemcpy(output_data, buffers[output_index], output_data_size, cudaMemcpyDeviceToHost);
+
+    cudaFree(&buffers[0]);
+    cudaFree(&buffers[1]);
+}
+
 void execute_bindings_v2(Context_t* execution_context, void** bindings) {
     if (execution_context == nullptr)
         return;
