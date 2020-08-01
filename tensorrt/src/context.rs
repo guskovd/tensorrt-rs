@@ -30,9 +30,9 @@ impl<'a> Context<'a> {
 
     pub fn execute(
         &self,
-        input_data: Vec<f32>,
+        input_data: &[f32],
         input_binding_index: i32,
-        output_data: &mut Vec<f32>,
+        output_data: &mut[f32],
         output_data_size: usize,
         ouptut_binding_index: i32,
     ) {
@@ -51,9 +51,9 @@ impl<'a> Context<'a> {
 
     pub fn execute_v2(
         &self,
-        input_data: Vec<f32>,
+        input_data: &[f32],
         input_binding_index: i32,
-        output_data: &mut Vec<f32>,
+        output_data: &mut[f32],
         output_data_size: usize,
         ouptut_binding_index: i32,
     ) {
